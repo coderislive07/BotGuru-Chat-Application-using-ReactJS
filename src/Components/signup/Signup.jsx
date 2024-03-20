@@ -1,58 +1,89 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logo1 from '../../assets/logo2.png';
-import { GoogleOAuthProvider } from '@react-oauth/google';
-import { GoogleLogin } from '@react-oauth/google';
-import apple from '../../assets/apple.png';
-import microsoft from '../../assets/microsoft.png';
-import google from '../../assets/google1.png';
-import {jwtDecode} from "jwt-decode";
-import MicrosoftLogin from "react-microsoft-login";
-import { useNavigate } from 'react-router-dom'
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import './signup.css';
 
 export default function Signup() {
-  const authHandler = (err, data) => {
-    console.log(err, data);
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: '',
+    password: '',
+  });
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleInputs = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
   };
-      const navigate =useNavigate()
-      return (
-        <>
-          <div className="top-logo">
-            <img src={logo1} alt="Logo" />
-          </div>
-          <div className="middle-essentials">
-            <h1>Create your account</h1>
-            <div className="user-input-wrp">
-              <input type="email" className="inputText" placeholder="Email address" />
-              <span className="floating-input">Email address</span>
-            </div>
-            <button type="button">Continue</button>
-            <p>Don't have any account? <a href="#"onClick={()=>navigate("/login")}>Login</a></p>
-            <h2><span>OR</span></h2>
-          </div>
-          <div className="buttons">
-          <div className="googlebutton">
-        <GoogleOAuthProvider clientId="703349034098-p46flheubh9hrs5d8f3le5baukqtf9al.apps.googleusercontent.com">
-          <GoogleLogin
-          
-            onSuccess={credentialResponse => {
-              const decoded = jwtDecode(credentialResponse.credential);
-              console.log(decoded);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
-          />
-        </GoogleOAuthProvider>
-        </div>
-        <div className="microsoftbutton">
-        <MicrosoftLogin
-          clientId="5adbb0be-12db-4c0e-bdc9-b56db79da36f"
-          authCallback={authHandler}
-          redirectUri="http://localhost:3001/Chatgpt5-Application-using-ReactJS"
-        />
-        </div>
-      </div>
-      </>
-      )
+
+  const handleLoginForm = () => {
+    navigate('/login');
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const { email, password } = user;
+
+    const auth = getAuth();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('User logged in successfully');
+      navigate('/chatbot');
+    } catch (signInError) {
+      try {
+        const userData = await createUserWithEmailAndPassword(auth, email, password);
+        console.log(userData, "authData");
+        navigate('/chatbot');
+      } catch (signupError) {
+        console.error('Error creating user:', signupError);
+      }
     }
-  
+  };
+
+  return (
+    <>
+      <div className="top-logo">
+        <img src={logo1} alt="Logo" />
+      </div>
+      <div className="middle-essentials">
+        <h1>Create an account</h1>
+        <form onSubmit={handleFormSubmit}>
+          <div className="user-input-wrp">
+            <input type="email" name="email" className="inputText" placeholder="Email address" value={user.email} onChange={handleInputs} />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                className="inputPassword"
+                placeholder="Password"
+                value={user.password}
+                onChange={handleInputs}
+              />
+        
+              <div className='check'>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+                <span className='showpwd'>Show Password</span>
+              </label>
+              </div>
+            </div>
+            <span className="floating-input">Email address</span>
+          </div>
+          <button type="submit">Sign Up</button>
+        </form>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+      </div>
+      <div className="policies">
+        <p>Terms of Use | Privacy Policy</p>
+      </div>
+    </>
+  );
+}

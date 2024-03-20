@@ -142,6 +142,10 @@ h2 {
     color: #777;
     opacity: 0.5; /* Initial opacity */
   }
+  .showpwd
+  {
+    margin-left:-135px ;
+  }
   
   .user-input-wrp .inputText:focus ~ .floating-input {
     top: 0px;

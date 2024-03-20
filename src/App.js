@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Article, Brand, CTA, Feature, Navbar, Login, Signup } from "./Components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Features, Footer, Header, Possibility, WhatGPT3, Blog } from "./Containers";
+import Chatbot from './Components/chatbot/Chatbot';
 
 
 
@@ -23,6 +24,7 @@ const Layout = ({ children }) => {
           <CTA />
           <Blog />
           <Footer />
+          <chatbot/>
         </div>
       </div>
     </>
@@ -37,7 +39,8 @@ export default function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/*" element={<Layout />} /> {/* Render Layout for all other routes */}
+        <Route path="/*" element={<Layout />} /> 
+        <Route path="/chatbot" element={<Chatbot />} /> 
       </Routes>
     </Router>
     </>
