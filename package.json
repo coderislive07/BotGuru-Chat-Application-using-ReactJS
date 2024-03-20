@@ -1,5 +1,5 @@
 {
-  "homepage": "https://coderislive07.github.io/https://github.com/coderislive07/Chatgpt5-Application-using-ReactJS/",
+
   "name": "gpt_3_website",
   "version": "0.1.0",
   "private": true,
@@ -26,8 +26,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
