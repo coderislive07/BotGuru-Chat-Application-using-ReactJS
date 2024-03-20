@@ -1,0 +1,170 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+body
+{
+    background-color: white;
+    font-family: var(--font-family);
+}
+.top-logo
+{
+    display:flex;
+    justify-content: center;
+    margin-top:20px;
+   
+}
+.top-logo img
+{
+    width:38px;
+    height:38px;
+}
+.middle-essentials
+{
+    text-align: center;
+    margin-top:150px;
+}
+.middle-essentials h1
+{
+    font-size:32px;
+    margin-left:22px;   
+}
+.middle-essentials input
+{
+    padding:10px 16px;
+    font-size:18px;
+    width:300px;
+    border-radius:3px;
+    border-color: none;
+    border-color:rgb(240, 237, 237);
+    margin-top:30px;
+    margin-left:20px;
+}
+.middle-essentials button
+{
+    padding:4px 16px;
+    width:300px;
+    height:52px;
+    color:white;
+    background-color: #10a37f;
+    border:none;
+    border-radius:5px;
+    margin-top:30px;
+    margin-left: 20px;
+    font-weight:500;
+    font-size:16px;
+}
+.middle-essentials button:hover
+{
+    cursor:pointer;
+    background-color: #108d6e;
+
+}
+.middle-essentials p
+{
+    margin-top:30px;
+    margin-left:5px;
+}
+.middle-essentials a
+{
+    color:green;
+    margin-left:5px;
+}
+h2 {
+    width: 20%; 
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin-top:30px;
+    margin-left: 630px;
+    font-weight: 500;
+    font-size:15px;
+ } 
+ 
+ h2 span { 
+     background:#fff; 
+     padding:0 10px; 
+ }
+ .buttons
+ {
+    text-align: center;
+    margin-top:20px;
+    color:#2D333A;
+    margin-left:2   0px;
+ }
+ .buttons button:hover
+ {
+    background-color: rgb(211, 207, 207);
+ }
+ .buttons img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px; /* Add right margin for spacing */
+    margin-bottom: -5px; /* Adjust bottom margin for alignment */
+}
+.user-input-wrp {
+    position: relative;
+    width: 20%;
+    margin: auto;
+  }
+  
+  .user-input-wrp .inputText {
+    width: 100%;
+    border-bottom: 1px solid #777;
+    box-shadow: none !important;
+    padding-top: 18px;
+  }
+  
+  .user-input-wrp .inputText:focus {
+    border-color: green;
+    border-width: medium medium 2px;
+  }
+  .user-input-wrp .inputPassword {
+    width: 100%;
+    border-bottom: 1px solid #777;
+    box-shadow: none !important;
+    padding-top: 18px;
+  }
+  
+  .user-input-wrp .inputPassword:focus {
+    border-color: green;
+    border-width: medium medium 2px;
+  }
+  
+  .user-input-wrp .floating-input {
+    position: absolute;
+    pointer-events: none;
+    top: 7px; /* Adjusted top position */
+    left: 20px;
+    transition: 0.2s ease all;
+    color: #777;
+    opacity: 0.5; /* Initial opacity */
+  }
+  
+  .user-input-wrp .inputText:focus ~ .floating-input {
+    top: 0px;
+    font-size: 13px;
+    opacity: 1;
+    color: green;
+  }
+ .googlebutton
+{
+    display:flex;
+    justify-content:center;
+}
+ .microsoftbutton
+{
+    display:flex;
+    justify-content:center;
+    margin-top:15px;
+}
+.policies
+{
+    color:green;
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
+    word-spacing: 3px;
+}

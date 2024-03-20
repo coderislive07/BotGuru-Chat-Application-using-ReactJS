@@ -1,0 +1,59 @@
+{
+  "homepage": "https://coderislive07.github.io/https://github.com/coderislive07/Chatgpt5-Application-using-ReactJS/",
+  "name": "gpt_3_website",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@react-oauth/google": "^0.12.1",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "aos": "^2.3.4",
+    "jwt-decode": "^4.0.0",
+    "lottie-react": "^2.4.0",
+    "react": "^18.2.0",
+    "react-apple-login": "^1.1.6",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-microsoft-login": "^2.0.1",
+    "react-rain-animation": "^1.0.4",
+    "react-router-dom": "^6.22.1",
+    "react-scripts": "5.0.1",
+    "react-social-login-buttons": "^3.9.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
