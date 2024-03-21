@@ -85,7 +85,7 @@ export default function Signup() {
           <MicrosoftLogin
             clientId='5adbb0be-12db-4c0e-bdc9-b56db79da36f'
             authCallback={handleMicrosoftAuthCallback}
-            redirectUri={'http://localhost:3003/chatbot'}
+            redirectUri={'https://mridulchatgpt.vercel.app/chatbot'}
           />
         </div>
       </div>
