@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo1 from '../../assets/logo2.png';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, getAuth } from 'firebase/auth'; // Combined imports
+import { GoogleOAuthProvider } from '@react-oauth/google'; // Import GoogleOAuthProvider for Google button
+import { GoogleLogin } from '@react-oauth/google'; // Import GoogleLogin for Google button
+import MicrosoftLogin from 'react-microsoft-login'; // Import MicrosoftLogin for Microsoft button
 import './signup.css';
 
 export default function Signup() {
@@ -19,7 +21,7 @@ export default function Signup() {
   };
 
   const handleLoginForm = () => {
-    navigate('/login');
+    navigate('/chatbot');
   };
 
   const handleFormSubmit = async (e) => {
@@ -83,6 +85,25 @@ export default function Signup() {
       </div>
       <div className="policies">
         <p>Terms of Use | Privacy Policy</p>
+      </div>
+      
+      {/* Google and Microsoft buttons */}
+      <div className="buttons">
+        <div className="googlebutton">
+          <GoogleOAuthProvider clientId="703349034098-p46flheubh9hrs5d8f3le5baukqtf9al.apps.googleusercontent.com">
+            <GoogleLogin
+              onSuccess={handleLoginForm} // You can replace handleLoginForm with the appropriate handler for Google login success
+              onError={() => console.log('Google login failed')} // Handle Google login error
+            />
+          </GoogleOAuthProvider>
+        </div>
+        <div className="microsoftbutton">
+          <MicrosoftLogin
+            clientId='5adbb0be-12db-4c0e-bdc9-b56db79da36f'
+            authCallback={() => console.log('Microsoft auth callback')} 
+            redirectUri={navigate('./chatbot')} 
+          />
+        </div>
       </div>
     </>
   );

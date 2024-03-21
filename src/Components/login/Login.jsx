@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import logo1 from '../../assets/logo2.png';
-import { signInWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth'; // Removed unnecessary getAuth import
 import { GoogleOAuthProvider } from '@react-oauth/google'; // Import GoogleOAuthProvider for Google button
 import { GoogleLogin } from '@react-oauth/google'; // Import GoogleLogin for Google button
 import MicrosoftLogin from 'react-microsoft-login'; // Import MicrosoftLogin for Microsoft button
+import auth from './firebaseconfig'; // Import Firebase auth instance from your firebase file
 import './login.css';
 
 export default function Login() {
@@ -38,16 +38,13 @@ export default function Login() {
     console.log('Microsoft auth callback:', err, data);
   };
 
-  const handleMicrosoftRedirectUri = () => {
-    console.log('Microsoft redirect URI');
-  };
+
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     const { email, password } = user;
-    const auth = getAuth();
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password); // Use the imported auth instance
       console.log('User logged in successfully');
       navigate('/chatbot');
     } catch (signInError) {
@@ -97,7 +94,7 @@ export default function Login() {
       </div>
       <div className="buttons">
         <div className="googlebutton">
-          <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+          <GoogleOAuthProvider clientId="703349034098-p46flheubh9hrs5d8f3le5baukqtf9al.apps.googleusercontent.com">
             <GoogleLogin
               onSuccess={handleGoogleLoginSuccess}
               onError={handleGoogleLoginError}
@@ -106,9 +103,9 @@ export default function Login() {
         </div>
         <div className="microsoftbutton">
           <MicrosoftLogin
-            clientId="3338bf4f-4e11-4043-b366-9df8d243d82c"
+            clientId='5adbb0be-12db-4c0e-bdc9-b56db79da36f'
             authCallback={handleMicrosoftAuthCallback}
-            redirectUri={handleMicrosoftRedirectUri}
+            redirectUri={'http://localhost:3000/chatbot'}
           />
         </div>
       </div>
