@@ -22,12 +22,9 @@ export default function Login() {
     setUser({ ...user, [name]: value });
   };
 
-  const handleSignUp = () => {
-    navigate('/signup');
-  };
 
   const handleGoogleLoginSuccess = () => {
-    navigate('/chatbot');
+    navigate('https://mridulchatgpt.vercel.app/chatbot');
   };
 
   const handleGoogleLoginError = () => {
@@ -46,7 +43,7 @@ export default function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, password); // Use the imported auth instance
       console.log('User logged in successfully');
-      navigate('/chatbot');
+      navigate('https://mridulchatgpt.vercel.app/chatbot');
     } catch (signInError) {
       setLoginError("You don't have an existing account. Please sign up first.");
     }
@@ -105,7 +102,7 @@ export default function Login() {
           <MicrosoftLogin
             clientId='5adbb0be-12db-4c0e-bdc9-b56db79da36f'
             authCallback={handleMicrosoftAuthCallback}
-            redirectUri={'http://localhost:3000/chatbot'}
+            redirectUri={'https://mridulchatgpt.vercel.app/chatbot'}
           />
         </div>
       </div>

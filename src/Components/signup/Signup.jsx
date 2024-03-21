@@ -32,12 +32,12 @@ export default function Signup() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('User logged in successfully');
-      navigate('/chatbot');
+      navigate('https://mridulchatgpt.vercel.app/chatbot');
     } catch (signInError) {
       try {
         const userData = await createUserWithEmailAndPassword(auth, email, password);
         console.log(userData, "authData");
-        navigate('/chatbot');
+        navigate('https://mridulchatgpt.vercel.app/chatbot');
       } catch (signupError) {
         console.error('Error creating user:', signupError);
       }
@@ -101,7 +101,7 @@ export default function Signup() {
           <MicrosoftLogin
             clientId='5adbb0be-12db-4c0e-bdc9-b56db79da36f'
             authCallback={() => console.log('Microsoft auth callback')} 
-            redirectUri={navigate('./chatbot')} 
+            redirectUri={navigate('https://mridulchatgpt.vercel.app/chatbot')} 
           />
         </div>
       </div>
