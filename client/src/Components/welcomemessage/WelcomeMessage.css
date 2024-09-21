@@ -1,0 +1,29 @@
+.welcome-message
+{
+    height:52.2vh;
+   
+}
+.welcome-message img
+{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 450px;
+    margin-top: 50px;
+}
+.welcome-message h2
+{
+    font-size: 30px;
+    width: 500px;
+    margin-left: 330px;
+    margin-top: 30px;
+}
+.welcome-message p
+{
+    font-size: 20px;
+    width: 800px;
+    margin-left: 350px;
+    margin-top: 30px;
+    color:gray
+}
