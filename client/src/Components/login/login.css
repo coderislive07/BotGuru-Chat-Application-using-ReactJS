@@ -37,12 +37,7 @@ body
 }
 
 
-.middle-essentials p
-{
-    margin-top:30px;
-    margin-left:5px;
-    color:white;
-}
+
 .middle-essentials a
 {
     color:green;
@@ -83,9 +78,11 @@ body
 }
 .leftarrow
 {
-  margin-left: 10px;
+  margin-left: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 5px;
+  width:40px;
+  height:50px;
 }
 
 .input-content {
@@ -147,8 +144,8 @@ body
 .input-content::after {
   content: "";
   position: absolute;
-  width: 200%;
-  height: 200%;
+  width: 220%;
+  height: 220%;
   
   box-shadow: inset 0px 0px 20px 20px #212121;
   background: repeating-linear-gradient(
@@ -272,9 +269,12 @@ body
 }
 .error-message 
 {
+
   color:red;
   width:700px;
-  margin-bottom: 20px;
+  margin-top: 30px;
+  margin-left: -90px;
+  position: absolute;
 }
 
 .submit-button {
@@ -399,12 +399,14 @@ body
 .tosignin
 {
   margin-top: -50px;
+  position: absolute;
 }
 .leftarrow
 {
-  margin-left: 10px;
+  margin-left: 310px;
   cursor: pointer;
-  margin-top: 10px;
+
+  margin-top: 120px;
   width:70px;
   height:10px;
 }
