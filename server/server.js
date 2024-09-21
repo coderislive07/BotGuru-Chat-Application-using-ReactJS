@@ -65,11 +65,7 @@ app.post('/api/google-auth',async(req,res)=>
     res.status(401).json({ error: 'Unauthorized' });
   }
 });
-app.get('https://bot-guru-chat-application-using-react-js.vercel.app/api/hello',async(req,res)=>
-  {
-    console.log("yes")
-    res.status(200).json({"message":"User Message"})
-  });
+
 
 
 app.post('/api/chat', async (req, res) => {
