@@ -56,7 +56,7 @@ app.post('/api/google-auth',async(req,res)=>
     return res.status(400).json({ error: 'No ID token provided' });
   }
   try {
-    const decodedToken = await admin.auth().verifyIdToken(idToken);
+    const decodedToken = await xadmin.auth().verifyIdToken(idToken);
     const userRecord = await admin.auth().getUser(decodedToken.uid);
     
     res.json({ message: 'User authenticated', user: decodedToken, userRecord });
@@ -65,7 +65,6 @@ app.post('/api/google-auth',async(req,res)=>
     res.status(401).json({ error: 'Unauthorized' });
   }
 });
-
 
 
 app.post('/api/chat', async (req, res) => {
