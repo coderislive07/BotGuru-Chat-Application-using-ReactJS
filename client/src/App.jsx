@@ -84,7 +84,7 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        {/* Redirect any other route to the chatbot if authenticated */}
+
         <Route path="*" element={<Navigate to="/home" />} />
       </Routes>
     </Router>

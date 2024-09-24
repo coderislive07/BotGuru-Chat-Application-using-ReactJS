@@ -7,14 +7,15 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const { CohereClient } = require('cohere-ai');
-
 const app = express();
 const { PORT, DATABASE_URL } = process.env;
 
-const serviceAccount = require('./firebase/firebase-adminsdk.json');
+
+const serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
 });
+
 
 app.use(cookieParser());
 app.use(express.json());
@@ -48,16 +49,19 @@ app.post('/api/login', async (req, res) => {
     res.status(401).json({ error: 'Unauthorized' });
   }
 });
-app.post('/api/google-auth',async(req,res)=>
-{
-  console.log("yes")
-  const { idToken, } = req.body;
+app.post('/api/google-auth', async (req, res) => {
+  console.log("Google authentication initiated");
+
+  const idToken = req.cookies.idToken; // Get idToken from cookies (like in /api/login)
+  
   if (!idToken) {
     return res.status(400).json({ error: 'No ID token provided' });
   }
+
   try {
     const decodedToken = await admin.auth().verifyIdToken(idToken);
     const userRecord = await admin.auth().getUser(decodedToken.uid);
+    
     
     res.json({ message: 'User authenticated', user: decodedToken, userRecord });
   } catch (error) {
@@ -65,6 +69,7 @@ app.post('/api/google-auth',async(req,res)=>
     res.status(401).json({ error: 'Unauthorized' });
   }
 });
+
 
 
 app.post('/api/chat', async (req, res) => {

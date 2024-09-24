@@ -45,7 +45,7 @@
         if (response.status === 200) {
           setUserInfo(userCredential.user); 
           console.log(userCredential.user)
-          navigate('/Chatbot');
+          navigate('/dashboard');
         }
       } catch (error) {
     
