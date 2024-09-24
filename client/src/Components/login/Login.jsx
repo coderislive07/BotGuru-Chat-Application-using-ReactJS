@@ -87,6 +87,10 @@
           setUserInfo({ ...userProfile, idToken }); 
           navigate('/chatbot');
         }
+        else
+        {
+          console.error('Authentication failed:', response.data.error);
+        }
       } catch (error) {
         console.error('Google Sign-In Error:', error);
       }
