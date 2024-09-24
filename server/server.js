@@ -39,6 +39,11 @@ app.use(cors({
   origin: process.env.ORIGIN,
   credentials: true
 }));
+app.use((req, res, next) => {
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp'); 
+  next();
+});
 
 app.post('/api/login', async (req, res) => {
   console.log("in login process");
