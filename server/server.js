@@ -11,10 +11,15 @@ const app = express();
 const { PORT, DATABASE_URL } = process.env;
 
 
-const serviceAccount = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert({
+    projectId: process.env.FIREBASE_PROJECT_ID,
+    privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'), // Corrected syntax
+    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  }),
 });
+
+
 
 
 app.use(cookieParser());
